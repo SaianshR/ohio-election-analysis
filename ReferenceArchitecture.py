@@ -56,9 +56,9 @@ def multi_dimensional_scaling(mdslifts : pd.DataFrame, points : list):
     mdslifts = mds.fit_transform(mdslifts)
 
     colors = ["#"+''.join([random.choice('0123456789ABCDEF') for j in range(6)])
-             for i in len(points)]
+             for i in range(len(points))]
 
-    size = [64 for i in len(points)] ##41FB29
+    size = [64 for i in range(len(points))] ##41FB29
     fig = plt.figure(2, (10,4))
     plt.scatter(mdslifts[:,0], mdslifts[:,1], s=size, c=colors)
     count = 0
