@@ -73,3 +73,24 @@ def multi_dimensional_scaling(mdslifts : pd.DataFrame, points : list):
         )
     plt.title('mds')
     return plt.show()
+
+"""sumary_line
+
+Keyword arguments:
+argument -- description
+Return: return_description
+"""
+def lift_adjustment(df : pd.DataFrame, threshold_1 : float, threshold_2 : float, scale_1 : float, scale_2 : float):
+    col_names = [x for x in df.columns]
+    new_arr = []
+    for row in df.values:
+        new_val = []
+        for value in row:
+            if value > threshold_1:
+                value = value * scale_1
+            if value > threshold_2:
+                value = value * scale_2
+            new_val.append(value)
+        new_arr.append(new_val)
+    complete_df = pd.DataFrame(new_arr, columns=col_names)
+    return complete_df
