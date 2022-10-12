@@ -74,12 +74,18 @@ def multi_dimensional_scaling(mdslifts : pd.DataFrame, points : list):
     plt.title('mds')
     return plt.show()
 
-"""sumary_line
+"""Applies scalar modification to lift value dataframe to reshape for MDS plot
 
 Keyword arguments:
-argument -- description
-Return: return_description
+df -- (Pandas Dataframe)
+threshold_1 -- (float) value determine which lift value to modify
+threshold_2 -- (float) value determine which lift value to modify
+scale_1 -- (float) value to modify lift value
+scale_2 -- (float) value to modify lift value
+Return: Dataframe with the rescaled/modified lift values
 """
+# NOTE: Can improve this code by making it able to accept multiple arguments ex. using **args with nested loop of comparison
+# What I mean is take the "If value > threshold: ..." and make it its own function to accept any number of keywords.
 def lift_adjustment(df : pd.DataFrame, threshold_1 : float, threshold_2 : float, scale_1 : float, scale_2 : float):
     col_names = [x for x in df.columns]
     new_arr = []
