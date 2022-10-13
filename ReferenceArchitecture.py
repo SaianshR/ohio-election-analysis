@@ -86,7 +86,7 @@ Return: Dataframe with the rescaled/modified lift values
 """
 # NOTE: Can improve this code by making it able to accept multiple arguments ex. using **args with nested loop of comparison
 # What I mean is take the "If value > threshold: ..." and make it its own function to accept any number of keywords.
-def lift_adjustment(df : pd.DataFrame, threshold_1 : float, threshold_2 : float, scale_1 : float, scale_2 : float):
+def lift_adjustment(df : pd.DataFrame, threshold_1 : float, threshold_2 : float, threshold_3 : float, scale_1 : float, scale_2 : float, scale_3 : float):
     col_names = [x for x in df.columns]
     new_arr = []
     for row in df.values:
@@ -96,6 +96,8 @@ def lift_adjustment(df : pd.DataFrame, threshold_1 : float, threshold_2 : float,
                 value = value * scale_1
             if value > threshold_2:
                 value = value * scale_2
+            if value > threshold_3:
+                value = value * scale_3
             new_val.append(value)
         new_arr.append(new_val)
     complete_df = pd.DataFrame(new_arr, columns=col_names)
